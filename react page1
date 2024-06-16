@@ -1,0 +1,24 @@
+// Page1.js
+import React from 'react';
+import { Link } from 'react-router-dom';
+import moviesData from './moviesData'; // assume moviesData contains an array of movie objects with id, title, image
+
+const Page1 = () => {
+  return (
+    <div className="movie-list">
+      <h2>List of Movies</h2>
+      <div className="grid-container">
+        {moviesData.map(movie => (
+          <Link key={movie.id} to={`/movie/${movie.id}`}>
+            <div className="grid-item">
+              <img src={movie.image} alt={movie.title} />
+              <p>{movie.title}</p>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Page1;
