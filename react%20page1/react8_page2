@@ -1,0 +1,22 @@
+// Page2.js
+import React from 'react';
+import { useParams, Link } from 'react-router-dom';
+import moviesData from './moviesData'; // assuming moviesData is imported
+
+const Page2 = () => {
+  const { id } = useParams(); // Get movie id from URL params
+  const movie = moviesData.find(movie => movie.id === parseInt(id)); // Find movie by id
+
+  if (!movie) return <div>Movie not found.</div>;
+
+  return (
+    <div className="movie-details">
+      <h2>{movie.title}</h2>
+      <img src={movie.image} alt={movie.title} />
+      <p>Movie description: {movie.description}</p>
+      <Link to={`/book/${movie.id}`} className="book-button">Book Seats</Link>
+    </div>
+  );
+};
+
+export default Page2;
