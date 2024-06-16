@@ -1,0 +1,24 @@
+// Page4.js
+import React from 'react';
+import { useParams, Link } from 'react-router-dom';
+
+const Page4 = () => {
+  const { id } = useParams(); // Get booking id from URL params
+  // Assuming name, email, and mobile are passed as query params from Page3
+  const name = new URLSearchParams(window.location.search).get('name');
+  const email = new URLSearchParams(window.location.search).get('email');
+  const mobile = new URLSearchParams(window.location.search).get('mobile');
+
+  return (
+    <div className="confirmation">
+      <h2>Booking Confirmed</h2>
+      <p>Booking ID: {id}</p>
+      <p>Name: {name}</p>
+      <p>Email: {email}</p>
+      <p>Mobile: {mobile}</p>
+      <Link to="/">Back to Home</Link>
+    </div>
+  );
+};
+
+export default Page4;
